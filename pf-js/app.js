@@ -85,4 +85,4 @@ console.log(age);
 if (age >= 12 && age <= 21) { alert("Bienvenido a Prisma"); }
 else if (age >= 22) { alert("Lo sentimos prueba con el grupo 20 y más"); }
 else if (age >= 5 && age <= 11) { alert("Trata en Kids"); }
-else if (age <= 3) { alert("Babys es para ti"); }
+else (age <= 3); { alert("Babys es para ti"); }
