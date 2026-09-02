@@ -1,36 +1,44 @@
-//declarar la funcion
-function saludar() {
-    console.log("hola");
-}
-//usar la función (invocar o llamar)
-saludar();
+const numeros = [42, 7, 91, 18, 63, 25, 84, 3, 56, 71, 12, 97, 34, 68, 9, 45, 77, 21, 60, 5, 88, 31, 14, 73, 49, 2, 95, 38, 66, 27, 81, 10, 54, 92, 16, 69, 33, 76, 24, 58, 1, 87, 40, 65, 19, 99, 52, 29, 74, 6, 83, 35, 11, 57, 90, 23, 47, 79, 4, 61, 98, 26, 70, 13, 85, 32, 55, 8, 93, 41, 64, 17, 72, 28, 50, 96, 20, 67, 36, 82, 15, 59, 94, 30, 75, 22, 48, 86, 39, 62, 100, 44, 78, 53, 89, 37, 51, 80, 43, 46, 132, 107, 191, 118, 163, 125, 184, 103, 156, 171, 112, 197, 134, 168, 109, 145, 177, 121, 160, 105, 188, 131, 114, 173, 149, 102, 195, 138, 166, 127, 181, 110, 154, 192, 116, 169, 133, 176, 124, 158, 101, 187, 140, 165, 119, 199, 152, 129, 174, 106, 183, 135, 111, 157, 190, 123, 147, 179, 104, 161, 198, 126, 170, 113, 185, 130, 155, 108, 193, 141, 164, 117, 172, 128, 150, 196, 120, 167, 136, 182, 115, 159, 194, 122, 175, 142, 148, 186, 139, 162, 200, 144, 178, 153, 189, 137, 151, 180, 143, 146];
 
-//funcion con parámetros
-function saludarConNombre(name, edad) {
-    console.log(`Hola ${name} mucho gusto en conocerte no sabá que tenías ${edad} años`);
+//* For of: 
+// solo sirve para conocer el valor de cada elemento del array, no su índice.
+for (const numero of numeros) {
+    console.log(`El número es ${numero}`);
 }
 
-//pasando argumentos a una función, js no distingue los tipos de datos ingresados, solo la posición de estos (específico para funciones)
-saludarConNombre("Zaira", 27);
-saludarConNombre(7, "Polo");
+//* forEach:
+numeros.forEach((numero, index, array) => {
+    console.log(`El número ${numero} con ${index} más dos es ${numero + 2}`);
+    console.log(`El array original es ${array}`);
+    return numero + 2;
+});
 
-/**función que retorna algo
- * !Importante: Cuando usamos return
- * 1. termina la ejecución de la función
- * 2. el valor retornado debe ser ocupado o nunca lo vamos a ver
- */
-function multiplyTwoNumbers(a, b) { //typeof especifica que tipo de dato es
-    if (typeof a == "number" && typeof b == "number") {
-        return a * b; //finaliza ejecución, pero como es if condicional podemos escribir otra salida
-    } else {
-        return "por favor ingresa dos números"; // finaliza la ejecución
-    }
-    console.log("Nunca me vas a ver"); //esto nunca se ve
+//* Map:
+// Ejecuta una función sobre cada elemento de un array y devuelve un nuevo array con resultado.
+
+//ejemplo 1: 
+function multiplyBy3(numero) {
+    return numero * 3;
 }
+const numerosXTres = numeros.map(multiplyBy3);
+console.log(numerosXTres);
 
-//aquí no voy a ver nada
-multiplyTwoNumbers(2, 3);
+//ejemplo 2:
+const numerosXCuatro = numeros.map((numero) => numero * 4);
+console.log(numerosXCuatro);
 
-//imprimiendo el valor de retorno en consola
-console.log(multiplyTwoNumbers(5, 3));
-console.log(multiplyTwoNumbers(3, "polo")); //ejemplo de error
+//* Filter:
+// Filtra los elementos de un array según una condición booleana y devuelve un nuevo array con los elementos que cumplen la condición.
+const pares = numeros.filter(function (numero) { return numero % 2 == 0 });
+console.log(pares);
+
+//ejercicio: multiplos de 3
+const multiplosDe3 = numeros.filter(function (numero) { return numero % 3 == 0 });
+console.log(multiplosDe3);
+
+//ejercicio: IVA
+function calcularIVA(numero) {
+    return numero * 1.16;
+}
+const ivas = numeros.map(calcularIVA);
+console.log(ivas);
